@@ -244,15 +244,15 @@ pub async fn kline_symbols_ao<'a>(
     wait_sec: &f64,
 ) -> Result<MAP<&'a str, Vec<String>>, Box<dyn Error>>
 {   
-    Ok(one_time_hm(
+    one_time_hm(
         async || kline_symbols_a(
             api_url, 
             category, 
             symbols, 
             interval,
             wait_sec,
-        ).await?,
-    ).await)
+        ).await,
+    ).await
 }
 
 pub async fn klines_symbols<'a>(
@@ -304,7 +304,7 @@ pub async fn klines_symbols_a<'a>(
         symbols
         .iter()
         .map(|s| async {
-            (
+            Ok((
                 s.as_str(), 
                 klines_a(
                     api_url, 
@@ -317,10 +317,10 @@ pub async fn klines_symbols_a<'a>(
                     wait_sec,
                 )
                     .await?
-            )
+            ))
         })
     )
         .await
         .into_iter()
-        .collect()
+        .collect::<Result<_, Box<dyn Error>>>()
 }
