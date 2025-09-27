@@ -1,16 +1,17 @@
 use reqwest::Client;
-use bc_utils_lg::statics::settings::SETTINGS;
+use bc_utils_lg::funcs::settings::settings_from_json;
 
 use bc_exch_api_funcs::bybit::account::wallet_balance::*;
 
 
 #[tokio::test]
 async fn wallet_balance_req_lch_1() {
+    let sttngs = settings_from_json("settings.json").unwrap();
     println!("{:#?}", wallet_balance_req(
         &Client::new(),
-        &SETTINGS.exch.api_key,
-        &SETTINGS.exch.api_secret,
-        &SETTINGS.exch.api_url,
+        &sttngs.exch.api_key,
+        &sttngs.exch.api_secret,
+        &sttngs.exch.api_url,
         "UNIFIED", 
         "USDT",
     ).await.unwrap());
@@ -18,11 +19,12 @@ async fn wallet_balance_req_lch_1() {
 
 #[tokio::test]
 async fn wallet_balance_a_lch_1() {
+    let sttngs = settings_from_json("settings.json").unwrap();
     println!("{:#?}", wallet_balance_a(
         &Client::new(),
-        &SETTINGS.exch.api_key,
-        &SETTINGS.exch.api_secret,
-        &SETTINGS.exch.api_url,
+        &sttngs.exch.api_key,
+        &sttngs.exch.api_secret,
+        &sttngs.exch.api_url,
         "UNIFIED", 
         "USDT",
         &f64::INFINITY,

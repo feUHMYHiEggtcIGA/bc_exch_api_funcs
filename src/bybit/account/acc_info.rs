@@ -15,8 +15,8 @@ use crate::bybit::const_url::ACC_INFO;
 
 pub async fn acc_info_req(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
 ) -> Result<RESULT_EXCH_BYBIT<RESULT_ACC_INFO>, Error_req>
 {
@@ -41,8 +41,8 @@ pub async fn acc_info_req(
 
 pub async fn acc_info(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
 ) -> Result<RESULT_ACC_INFO, Box<dyn std::error::Error>>
 {
@@ -51,8 +51,8 @@ pub async fn acc_info(
 
 pub async fn acc_info_a(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
     wait_sec: &f64,
 ) -> Result<RESULT_ACC_INFO, Box<dyn Error>>

@@ -18,8 +18,8 @@ use crate::bybit::const_url::WALLET_BALANCE;
 
 pub async fn wallet_balance_req(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
     account_type: &str,
     coin: &str
@@ -47,8 +47,8 @@ pub async fn wallet_balance_req(
 
 pub async fn wallet_balance(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
     account_type: &str,
     coin: &str
@@ -59,8 +59,8 @@ pub async fn wallet_balance(
 
 pub async fn wallet_balance_a(
     client: &Client,
-    token: &'static str,
-    secr: &'static str,
+    token: &str,
+    secr: &str,
     api_url: &str,
     account_type: &str,
     coin: &str,

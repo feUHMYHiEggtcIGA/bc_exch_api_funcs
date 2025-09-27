@@ -51,7 +51,7 @@ async fn klines_a_res_1() {
     if !res
         .windows(2)
         .take(2)
-        .any(|v| v[0][0].parse::<usize>().unwrap() < v[1][0].parse::<usize>().unwrap())
+        .any(|v| v[0]["time"] < v[1]["time"])
     || res.len() != 10000
     {
         panic!("{}", res.len());
@@ -75,7 +75,7 @@ async fn klines_a_res_2() {
     if !res
         .windows(2)
         .take(2)
-        .any(|v| v[0][0].parse::<usize>().unwrap() < v[1][0].parse::<usize>().unwrap())
+        .any(|v| v[0]["time"] < v[1]["time"])
     || res.len() != 1100
     {
         panic!("{}", res.len());
@@ -96,9 +96,9 @@ async fn klines_a_res_3() {
     )
         .await
         .unwrap();
-    if !res[0][0].parse::<usize>().unwrap() < res[1000][0].parse::<usize>().unwrap()
+    if res[0]["time"] < res[1000]["time"]
     {
-        panic!("{} < {}", res[0][0], res[1000][0]);
+        panic!("{} < {}", res[0]["time"], res[1000]["time"]);
     }
 }
 
@@ -150,7 +150,8 @@ async fn kline_symbols_ao_lch_1() {
         "1",
         &f64::INFINITY,
     )
-        .await;
+        .await
+        .unwrap();
 }
 
 #[tokio::test]
