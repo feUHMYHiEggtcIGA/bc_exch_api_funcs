@@ -9,9 +9,9 @@ async fn acc_info_req_lch_1() {
     let sttngs = settings_from_json("settings.json").unwrap();
     println!("{:#?}", acc_info_req(
         &Client::new(), 
-        &sttngs.exch.api_key,
-        &sttngs.exch.api_secret,
-        &sttngs.exch.api_url,
+        &sttngs.exch.key,
+        &sttngs.exch.secret,
+        &sttngs.exch.url,
     ).await.unwrap());
 }
 
@@ -20,9 +20,9 @@ async fn acc_info_a_lch_1() {
     let sttngs = settings_from_json("settings.json").unwrap();
 println!("{:#?}", acc_info_a(
         &Client::new(), 
-        &sttngs.exch.api_key,
-        &sttngs.exch.api_secret,
-        &sttngs.exch.api_url,
+        &sttngs.exch.key,
+        &sttngs.exch.secret,
+        &sttngs.exch.url,
         &f64::INFINITY,
     ).await.unwrap());
 }

@@ -9,9 +9,9 @@ async fn wallet_balance_req_lch_1() {
     let sttngs = settings_from_json("settings.json").unwrap();
     println!("{:#?}", wallet_balance_req(
         &Client::new(),
-        &sttngs.exch.api_key,
-        &sttngs.exch.api_secret,
-        &sttngs.exch.api_url,
+        &sttngs.exch.key,
+        &sttngs.exch.secret,
+        &sttngs.exch.url,
         "UNIFIED", 
         "USDT",
     ).await.unwrap());
@@ -22,9 +22,9 @@ async fn wallet_balance_a_lch_1() {
     let sttngs = settings_from_json("settings.json").unwrap();
     println!("{:#?}", wallet_balance_a(
         &Client::new(),
-        &sttngs.exch.api_key,
-        &sttngs.exch.api_secret,
-        &sttngs.exch.api_url,
+        &sttngs.exch.key,
+        &sttngs.exch.secret,
+        &sttngs.exch.url,
         "UNIFIED", 
         "USDT",
         &f64::INFINITY,
